@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="passwordsStash.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="JTURjIg1_i6t8kCHKm45_dJE3gfD_vx3rCubqg.woff2"
+    />
+    <link rel="stylesheet" href="JTUSjIg1_i6t8kCHKm459WdhyyTh89ZNpQ.woff2" />
+    <link rel="stylesheet" href="JTUQjIg1_i6t8kCHKm459WxRxy7m0dR9pBOi.woff2" />
+
+    <link rel="stylesheet" href="passwordsStash.css" />
+    <title>Passwords Stash</title>
+  </head>
+  <body>
+    <div id="main-wrapper">
+      <div id="app-tittle">
+        <button id="addCredential"><span id="plus-icon">&#x2727;</span></button>
+        <span id="app-name">MY PASSWORDS STASH</span>
+        <button id="editCredential">
+          <span id="pencil-icon">&#x270e;</span>
+        </button>
+      </div>
+      <hr />
+      <!-- ##################################################################################### -->
+
+      <div id="search-box">
+        <button id="search"><span id="search-icon">&#x1f50d;</span></button
+        ><input
+          type="search"
+          id="search-bar"
+          placeholder="Search by site name . . ."
+        />
+        <!-- <button id="best-eyes" style="opacity: 0"></button> -->
+
+        <button style="opacity: 0">
+          <span style="color: transparent">&#x1f440;</span>
+        </button>
+      </div>
+      <!-- ##################################################################################### -->
+
+      <ul id="matches">
+        <li class="close-match">
+          <input
+            type="text"
+            id="best-match-site"
+            value="Github"
+            placeholder=" - empty - "
+          />
+          <button id="best-eyes">
+            <span class="eyes-icon">&#x1f440;</span>
+          </button>
+        </li>
+
+        <li class="close-match">
+          <input
+            type="text"
+            id="middle-match-site"
+            value="Gin Hall"
+            placeholder=" - empty - "
+          />
+          <button id="middle-eyes">
+            <span class="eyes-icon">&#x1f440;</span>
+          </button>
+        </li>
+
+        <li class="close-match">
+          <input
+            type="text"
+            id="lowest-match-site"
+            value="Gypsy Moths"
+            placeholder=" - empty - "
+          />
+          <button id="lowest-eyes">
+            <span class="eyes-icon">&#x1f440;</span>
+          </button>
+        </li>
+      </ul>
+      <hr class="divider" />
+      <!-- ##################################################################################### -->
+
+      <h3 id="search-mode">
+        SEARCHING<span id="search-mode-icon"> &#x1f50d; </span>WEBSITE NAMES
+      </h3>
+      <h3 id="view-mode">
+        VIEWING<span id="view-mode-icon"> &#x1f440; </span>CREDENTIALS
+      </h3>
+      <h3 id="edit-mode">
+        EDITING<span id="edit-mode-icon"> &#x270e; </span>CREDENTIALS
+      </h3>
+      <h3 id="create-mode">
+        CREATING<span id="create-mode-icon"> &#x2727; </span>CREDENTIALS
+      </h3>
+
+      <ul id="details">
+        <li class="detail">
+          <span class="designator">Name: </span>
+
+          <input
+            type="text"
+            id="name"
+            value="Github"
+            placeholder="< Site Name >"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <li class="detail">
+          <span class="designator">Website: </span>
+
+          <input
+            type="text"
+            id="website"
+            value="www.github.com"
+            placeholder="< Web Address >"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <li class="detail">
+          <span class="designator">Email: </span>
+
+          <input
+            type="text"
+            id="email"
+            value="jmmejia4670@gmail.com"
+            placeholder="< Email address >"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <li class="detail">
+          <span class="designator">Username: </span>
+
+          <input
+            type="text"
+            id="username"
+            value="GoldenNerd"
+            placeholder="< User name >"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <li class="detail">
+          <span class="designator">Password: </span>
+
+          <input
+            type="text"
+            id="password"
+            value="Alive100."
+            placeholder="< Password >"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <li class="detail">
+          <span class="designator">Pin: </span>
+
+          <input
+            type="text"
+            id="pin"
+            value="1234"
+            placeholder="< Pin number >"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <li class="detail">
+          <span class="designator">Recovery email: </span>
+
+          <input
+            type="text"
+            id="recovery-email"
+            value="autopatio007@gmail.com"
+            placeholder="< Recovery email >"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <li class="detail">
+          <span class="designator">Secret image: </span>
+
+          <input
+            type="text"
+            id="secret-image"
+            value="Ironing board"
+            placeholder="< Secret image description >"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+      </ul>
+      <hr class="divider" />
+      <!-- ##################################################################################### -->
+
+      <h5>-- SECRET Q/A's FOR SELECTED SITE--</h5>
+      <ul id="qs-and-as">
+        <li>
+          <span class="designator">Question 0: </span>
+          <input
+            type="text"
+            id="question0"
+            value="Q0"
+            placeholder="< Secret question 0 >"
+          />
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 0: </span>
+
+          <input
+            type="text"
+            id="answer0"
+            value="A0"
+            placeholder="< Secret answer 0>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 1: </span>
+          <input
+            type="text"
+            id="question1"
+            value="Q1"
+            placeholder="< Secret question 1 >"
+          />
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 1: </span>
+
+          <input
+            type="text"
+            id="answer1"
+            value="A1"
+            placeholder="< Secret answer 1>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 2: </span>
+
+          <input
+            type="text"
+            id="question2"
+            value="Q2"
+            placeholder="< Secret question 2>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 2: </span>
+
+          <input
+            type="text"
+            id="answer2"
+            value="A2"
+            placeholder="< Secret answer 2>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 3: </span>
+
+          <input
+            type="text"
+            id="question3"
+            value="Q3"
+            placeholder="< Secret question 3>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 3: </span>
+
+          <input
+            type="text"
+            id="answer3"
+            value="A3"
+            placeholder="< Secret answer 3>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 4: </span>
+
+          <input
+            type="text"
+            id="question4"
+            value="Q4"
+            placeholder="< Secret question 4>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 4: </span>
+
+          <input
+            type="text"
+            id="answer4"
+            value="A4"
+            placeholder="< Secret answer 4>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 5: </span>
+
+          <input
+            type="text"
+            id="question5"
+            value="Q5"
+            placeholder="< Secret question 5>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 5: </span>
+
+          <input
+            type="text"
+            id="answer5"
+            value="A5"
+            placeholder="< Secret answer 5>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 6: </span>
+
+          <input
+            type="text"
+            id="question6"
+            value="Q6"
+            placeholder="< Secret question 6>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 6: </span>
+
+          <input
+            type="text"
+            id="answer6"
+            value="A6"
+            placeholder="< Secret answer 6>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 7: </span>
+
+          <input
+            type="text"
+            id="question7"
+            value="Q7"
+            placeholder="< Secret question 7>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 7: </span>
+
+          <input
+            type="text"
+            id="answer7"
+            value="A7"
+            placeholder="< Secret answer 7>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 8: </span>
+
+          <input
+            type="text"
+            id="question8"
+            value="Q8"
+            placeholder="< Secret question 8>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 8: </span>
+
+          <input
+            type="text"
+            id="answer8"
+            value="A8"
+            placeholder="< Secret answer 8>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+
+        <li>
+          <span class="designator">Question 9: </span>
+
+          <input
+            type="text"
+            id="question9"
+            value="Q9"
+            placeholder="< Secret question 9>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 9: </span>
+
+          <input
+            type="text"
+            id="answer9"
+            value="A9"
+            placeholder="< Secret answer 9>"
+          />
+
+          <button class="icon-button">
+            <span class="boxbox">&boxbox;</span>
+          </button>
+        </li>
+      </ul>
+      <hr />
+    </div>
+  </body>
+</html>
+<!-- <button id="search">&#x1F50D;</button>
+ -->
