@@ -1,0 +1,980 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="passwordStash.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="JTURjIg1_i6t8kCHKm45_dJE3gfD_vx3rCubqg.woff2"
+    />
+    <link rel="stylesheet" href="JTUSjIg1_i6t8kCHKm459WdhyyTh89ZNpQ.woff2" />
+    <link rel="stylesheet" href="JTUQjIg1_i6t8kCHKm459WxRxy7m0dR9pBOi.woff2" />
+    <link rel="stylesheet" href="passwordStash.css" />
+    <title>Passwords Stash</title>
+  </head>
+  <body>
+    <div id="main-wrapper">
+      <div id="app-tittle">
+        <span></span>
+        <button id="addCredential">
+          <span id="plus-icon">&#x2727;</span>
+        </button>
+        <span id="app-name">MY PASSWORDS STASH</span>
+        <button id="editCredential">
+          <span id="pencil-icon">&#x270e;</span>
+        </button>
+      </div>
+      <!-- <div id="dev-mode-div"></div> -->
+      <div id="notifications-area">
+        <button id="dev-mode-toggle">&#x1f527;</button>
+        <span id="notifications"></span>
+        <button id="search-mode-toggle">&#x1f50d;</button>
+      </div>
+      <!-- <h5 id="erase-values-typed-so-far">
+          All changes discarded. Your Password Stash was not altered.
+        </h5> -->
+      <hr class="divider0" />
+      <!-- ##################################################################################### -->
+      <h3 id="search-mode-anouncement">
+        SEARCHING<span id="mode-icon-search"> &#x1f50d; </span>WEBSITE NAMES
+      </h3>
+      <div id="search-div">
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="&#x1f50d; Search by website name . . ."
+        />
+        <button id="clr-search-bar">&#x2718;</button>
+      </div>
+      <!-- <button id="clr-search-bar"></button>         -->
+
+      <!-- <span id="search"></span> -->
+
+      <!-- ##################################################################################### -->
+
+      <ul id="matches">
+        <li class="oneOf3TopRelevantSearches">
+          <!-- <input
+            type="text"
+            id="best-match-site"
+            value="Github"
+            placeholder=" - empty - "
+          /> -->
+
+          <span id="best-match-site"> - empty - </span>
+          <button id="best-eyes-button">
+            <span class="eyes-icon">&#x1f440;</span>
+          </button>
+        </li>
+
+        <li class="oneOf3TopRelevantSearches">
+          <!-- <input
+            type="text"
+            id="middle-match-site"
+            value="Gin Hall"
+            placeholder=" - empty - "
+          /> -->
+
+          <span id="middle-match-site"> - empty - </span>
+          <button id="middle-eyes-button">
+            <span class="eyes-icon">&#x1f440;</span>
+          </button>
+        </li>
+
+        <li class="oneOf3TopRelevantSearches">
+          <!-- <input
+            type="text"
+            id="lowest-match-site"
+            value="Gypsy Moths"
+            placeholder=" - empty - "
+          /> -->
+
+          <span id="lowest-match-site"> - empty - </span>
+          <button id="lowest-eyes-button">
+            <span class="eyes-icon">&#x1f440;</span>
+          </button>
+        </li>
+      </ul>
+
+      <div id="debug-buttons">
+        <!-- <button id="flush">FLUSH</button> -->
+        <button id="empty-localstorage">clr LS</button>
+        <button id="write-to-localstorage">[] to LS</button>
+        <button id="is-localstorage-empty">LS = null?</button>
+        <button id="write-to-array">{} to []</button>
+        <button id="is-array-empty">{} in []?</button>
+        <button id="test-a-function">DEBUG</button>
+      </div>
+
+      <div id="mode-indicators">
+        <button id="search-indicator">&#x1f50d;</button>
+        <button id="view-indicator">&#x1f440;</button>
+        <!-- <input id="clipboard" type="text" name="clipboard" value="" /> -->
+        <button id="add-indicator">&#x2727;</button>
+        <button id="edit-indicator">&#x270e;</button>
+      </div>
+
+      <!--
+        <button id="mode-button">APP MODE?</button>
+      -->
+
+      <span id="first-usage-warning">
+        <span id="warning-icon">&#x26a0;</span
+        ><span id="warning-text"> Your Password Stash is empty!!</span>
+      </span>
+      <hr class="divider1" />
+      <!-- ##################################################################################### -->
+      <!--       <h3 id="search-mode-anouncement">
+        SEARCHING<span id="mode-icon-search"> &#x1f50d; </span>WEBSITE NAMES
+      </h3> -->
+      <div id="edit-toolbar">
+        <h3 id="view-mode-anouncement">
+          VIEWING<span id="mode-icon-view"> &#x1f440; </span>CREDENTIALS
+          <p>
+            <input id="clipboard" type="text" name="clipboard" value="" />
+          </p>
+        </h3>
+        <h3 id="edit-mode-anouncement">
+          EDITING<span id="mode-icon-edit"> &#x270e; </span>CREDENTIALS
+        </h3>
+        <h3 id="create-mode-anouncement">
+          CREATING<span id="mode-icon-create"> &#x2727; </span>CREDENTIALS
+        </h3>
+
+        <button id="cancel-changes">&#X21BA;</button
+        ><button id="delete-credential">&#x2718;</button>
+        <button id="save-new-or-edited">&#x2714;</button>
+      </div>
+      <!-- ##################################################################################### -->
+      <ul id="details">
+        <li>
+          <span class="designator">Name: </span>
+          <!--  <span id="name">< Site Name ></span> -->
+          <input
+            type="text"
+            class="text-input-field"
+            id="name"
+            value="Github"
+            placeholder="< Site Name >"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Website: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="website"
+            value="www.github.com"
+            placeholder="< Web Address >"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Email: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="email"
+            value="jmmejia4670@gmail.com"
+            placeholder="< Email address >"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Username: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="username"
+            value="GoldenNerd"
+            placeholder="< User name >"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Password: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="password"
+            value="Alive100."
+            placeholder="< Password >"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Pin: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="pin"
+            value="1234"
+            placeholder="< Pin number >"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Recovery email: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="recovery-email"
+            value="autopatio007@gmail.com"
+            placeholder="< Recovery email >"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Secret image: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="secret-image"
+            value="Ironing board"
+            placeholder="< Secret image description >"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+      </ul>
+      <ul id="view-usual-values">
+        <li>
+          <span class="designator">Name: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="name"
+            value="Github"
+            placeholder="< Site Name >"
+          /> -->
+          <span class="value-container-span" id="view-name">< Site Name ></span>
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Website: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="website"
+            value="www.github.com"
+            placeholder="< Web Address >"
+          /> -->
+          <span class="value-container-span" id="view-website"
+            >< Web Address ></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Email: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="email"
+            value="jmmejia4670@gmail.com"
+            placeholder="< Email address >"
+          /> -->
+          <span class="value-container-span" id="view-email"
+            >< Email address ></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Username: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="username"
+            value="GoldenNerd"
+            placeholder="< User name >"
+          /> -->
+          <span class="value-container-span" id="view-username"
+            >< User name ></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Password: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="password"
+            value="Alive100."
+            placeholder="< Password >"
+          /> -->
+          <span class="value-container-span" id="view-password"
+            >< Alive100. ></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Pin: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="pin"
+            value="1234"
+            placeholder="< Pin number >"
+          /> -->
+          <span class="value-container-span" id="view-pin">< Pin number ></span>
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Recovery email: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="recovery-email"
+            value="autopatio007@gmail.com"
+            placeholder="< Recovery email >"
+          /> -->
+          <span class="value-container-span" id="view-recovery-email"
+            >< Recovery email ></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <li>
+          <span class="designator">Secret image: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="secret-image"
+            value="Ironing board"
+            placeholder="< Secret image description >"
+          /> -->
+          <span class="value-container-span" id="view-secret-image"
+            >< Secret image description ></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+      </ul>
+      <hr class="divider2" />
+      <!-- ##################################################################################### -->
+
+      <h5 id="qa-hether">-- SECRET Q/A's FOR CHOSEN SITE --</h5>
+      <ul id="qs-and-as">
+        <li>
+          <span class="designator">Question 0: </span>
+          <input
+            type="text"
+            class="text-input-field"
+            id="question0"
+            value="Q0"
+            placeholder="< Secret question 0 >"
+          />
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 0: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer0"
+            value="A0"
+            placeholder="< Secret answer 0>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 1: </span>
+          <input
+            type="text"
+            class="text-input-field"
+            id="question1"
+            value="Q1"
+            placeholder="< Secret question 1 >"
+          />
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 1: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer1"
+            value="A1"
+            placeholder="< Secret answer 1>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 2: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="question2"
+            value="Q2"
+            placeholder="< Secret question 2>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 2: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer2"
+            value="A2"
+            placeholder="< Secret answer 2>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 3: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="question3"
+            value="Q3"
+            placeholder="< Secret question 3>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 3: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer3"
+            value="A3"
+            placeholder="< Secret answer 3>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 4: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="question4"
+            value="Q4"
+            placeholder="< Secret question 4>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 4: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer4"
+            value="A4"
+            placeholder="< Secret answer 4>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 5: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="question5"
+            value="Q5"
+            placeholder="< Secret question 5>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 5: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer5"
+            value="A5"
+            placeholder="< Secret answer 5>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 6: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="question6"
+            value="Q6"
+            placeholder="< Secret question 6>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 6: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer6"
+            value="A6"
+            placeholder="< Secret answer 6>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 7: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="question7"
+            value="Q7"
+            placeholder="< Secret question 7>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 7: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer7"
+            value="A7"
+            placeholder="< Secret answer 7>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 8: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="question8"
+            value="Q8"
+            placeholder="< Secret question 8>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 8: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer8"
+            value="A8"
+            placeholder="< Secret answer 8>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 9: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="question9"
+            value="Q9"
+            placeholder="< Secret question 9>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 9: </span>
+
+          <input
+            type="text"
+            class="text-input-field"
+            id="answer9"
+            value="A9"
+            placeholder="< Secret answer 9>"
+          />
+
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+      </ul>
+      <ul id="view-qs-and-as">
+        <li>
+          <span class="designator">Question 0: </span>
+          <!--  <input
+            type="text"
+            class="text-input-field"
+            id="question0"
+            value="Q0"
+            placeholder="< Secret question 0 >"
+          /> -->
+
+          <span class="value-container-span" id="view-question0"
+            >< Secret question 0></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 0: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer0"
+            value="A0"
+            placeholder="< Secret answer 0>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer0"
+            >< Secret answer 0></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 1: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question1"
+            value="Q1"
+            placeholder="< Secret question 1 >"
+          /> -->
+
+          <span class="value-container-span" id="view-question1"
+            >< Secret question 1></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 1: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer1"
+            value="A1"
+            placeholder="< Secret answer 1>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer1"
+            >< Secret answer 1></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 2: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question2"
+            value="Q2"
+            placeholder="< Secret question 2>"
+          /> -->
+
+          <span class="value-container-span" id="view-question2"
+            >< Secret question 2></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 2: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer2"
+            value="A2"
+            placeholder="< Secret answer 2>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer2"
+            >< Secret answer 2></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 3: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question3"
+            value="Q3"
+            placeholder="< Secret question 3>"
+          /> -->
+
+          <span class="value-container-span" id="view-question3"
+            >< Secret question 3></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 3: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer3"
+            value="A3"
+            placeholder="< Secret answer 3>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer3"
+            >< Secret answer 3></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 4: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question4"
+            value="Q4"
+            placeholder="< Secret question 4>"
+          /> -->
+
+          <span class="value-container-span" id="view-question4"
+            >< Secret question 4></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 4: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer4"
+            value="A4"
+            placeholder="< Secret answer 4>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer4"
+            >< Secret answer 4></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 5: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question5"
+            value="Q5"
+            placeholder="< Secret question 5>"
+          /> -->
+
+          <span class="value-container-span" id="view-question5"
+            >< Secret question 5></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 5: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer5"
+            value="A5"
+            placeholder="< Secret answer 5>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer5"
+            >< Secret answer 5></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 6: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question6"
+            value="Q6"
+            placeholder="< Secret question 6>"
+          /> -->
+
+          <span class="value-container-span" id="view-question6"
+            >< Secret question 6></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 6: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer6"
+            value="A6"
+            placeholder="< Secret answer 6>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer6"
+            >< Secret answer 6></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 7: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question7"
+            value="Q7"
+            placeholder="< Secret question 7>"
+          /> -->
+
+          <span class="value-container-span" id="view-question7"
+            >< Secret question 7></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 7: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer7"
+            value="A7"
+            placeholder="< Secret answer 7>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer7"
+            >< Secret answer 7></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 8: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question8"
+            value="Q8"
+            placeholder="< Secret question 8>"
+          /> -->
+
+          <span class="value-container-span" id="view-question8"
+            >< Secret question 8></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 8: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer8"
+            value="A8"
+            placeholder="< Secret answer 8>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer8"
+            >< Secret answer 8></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+
+        <li>
+          <span class="designator">Question 9: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="question9"
+            value="Q9"
+            placeholder="< Secret question 9>"
+          /> -->
+
+          <span class="value-container-span" id="view-question9"
+            >< Secret question 9></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+        <!-- @@@@@@@@@@@ -->
+        <li>
+          <span class="designator">Answer 9: </span>
+          <!-- <input
+            type="text"
+            class="text-input-field"
+            id="answer9"
+            value="A9"
+            placeholder="< Secret answer 9>"
+          /> -->
+
+          <span class="value-container-span" id="view-answer9"
+            >< Secret answer 9></span
+          >
+          <button class="a-boxbox-button">&boxbox;</button>
+        </li>
+      </ul>
+      <hr />
+    </div>
+
+    <!--     <h5 id="erase-values-typed-so-far">
+      All changes discarded. Your Password Stash was not altered.
+    </h5> -->
+  </body>
+</html>
+<!-- <button id="search">&#x1F50D;</button>
+ -->
+
+<!--   -->
