@@ -1,4 +1,4 @@
-﻿﻿"use strict";
+"use strict";
 
 //IMPORTANT NOTE:
 //PLEASE BE AWARE THAT THERE IS AN INVISIBLE OBJECT ON THE SCREEN ALL THE TIME. THE OBJECT IS THE CLIPBOARD TEXT INPUT. IT IS LOCATED IMMEDIATELY UNDER THE "VIEWING CREDENTIALS HETHER".
@@ -1423,8 +1423,35 @@ function findClosestMatches() {
         matchedSiteNames.push(" - empty - ");
       }
     }
-    // Improove: Sort matches in alphabetical order
-    matchedSiteNames.sort((a, b) => a - b);
+    
+ // Improove: Sort matches in alphabetical order:
+ 
+ // ######################
+ /*
+matchedSiteNames.sort((a, b) => a - b);
+ */
+    
+// Sorting algorithm:
+const alphaNumericSort = (matchedSiteNames = []) => { const sorter = (a, b) => {const isNumber = (v) => (+v).toString() === v;
+const aPart = a.match(/\d+|\D+/g);
+const bPart = b.match(/\d+|\D+/g);
+let i = 0;
+let len = Math.min(aPart.length, bPart.length);
+while (i < len && aPart[i] === bPart[i]) { i++; }
+if (i === len) {  return aPart.length - bPart.length;
+}
+if (isNumber(aPart[i]) && isNumber(bPart[i])) { return aPart[i] - bPart[i];
+}
+return aPart[i].localeCompare(bPart[i]);
+};
+matchedSiteNames.sort(sorter);
+};
+
+// Calling the soting akgirithm:
+alphaNumericSort(matchedSiteNames);
+    
+// ######################
+    
     console.log(`matchedSiteNames w/ original casing:`);
     console.log(matchedSiteNames);
 
